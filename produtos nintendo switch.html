@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nintendo Switch - Produtos</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+    }
+
+    header {
+      background: #e60012;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    nav {
+      background: #111;
+      text-align: center;
+      padding: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 12px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #e60012;
+    }
+
+    .container {
+      width: 90%;
+      margin: 30px auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #e60012;
+    }
+
+    .produtos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      width: 280px;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #ddd;
+    }
+
+    .card h3 {
+      color: #e60012;
+    }
+
+    .preco {
+      color: green;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .botao {
+      display: inline-block;
+      background: #e60012;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    .botao:hover {
+      background: #111;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Loja Nintendo Switch</h1>
+  <p>Produtos com preço e link</p>
+</header>
+
+<nav>
+  <a href="#">Início</a>
+  <a href="#produtos">Produtos</a>
+  <a href="#">Jogos</a>
+  <a href="#">Acessórios</a>
+</nav>
+
+<div class="container" id="produtos">
+  <h2>Produtos</h2>
+
+  <div class="produtos">
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Nintendo+Switch" alt="Nintendo Switch">
+      <h3>Nintendo Switch</h3>
+      <p>Console híbrido para jogar na TV ou portátil.</p>
+      <p class="preco">R$ 2.299,00</p>
+      <a class="botao" href="https://www.nintendo.com/us/switch/" target="_blank">
+        Ver produto
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Switch+OLED" alt="Nintendo Switch OLED">
+      <h3>Nintendo Switch OLED</h3>
+      <p>Tela OLED com cores mais vivas.</p>
+      <p class="preco">R$ 2.699,00</p>
+      <a class="botao" href="https://www.nintendo.com/us/switch/oled-model/" target="_blank">
+        Ver produto
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Switch+Lite" alt="Nintendo Switch Lite">
+      <h3>Nintendo Switch Lite</h3>
+      <p>Modelo portátil, leve e fácil de carregar.</p>
+      <p class="preco">R$ 1.499,00</p>
+      <a class="botao" href="https://www.nintendo.com/us/switch/lite/" target="_blank">
+        Ver produto
+      </a>
+    </div>
+
+    <div class="card">
+      <img src="https://via.placeholder.com/300x200?text=Joy-Con" alt="Joy-Con">
+      <h3>Joy-Con</h3>
+      <p>Controle colorido para Nintendo Switch.</p>
+      <p class="preco">R$ 499,00</p>
+      <a class="botao" href="https://www.nintendo.com/us/store/hardware/accessories/" target="_blank">
+        Ver produto
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>Site Nintendo Switch - HTML e CSS</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD Nintendo Switch</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+    }
+
+    header {
+      background: #e60012;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    nav {
+      background: #111;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 10px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #e60012;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    h2 {
+      color: #e60012;
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 4px;
+    }
+
+    .btn-salvar {
+      background: #e60012;
+      color: white;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .btn-editar {
+      background: #ffc107;
+    }
+
+    .btn-excluir {
+      background: #dc3545;
+      color: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 25px;
+    }
+
+    th {
+      background: #e60012;
+      color: white;
+      padding: 12px;
+    }
+
+    td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>CRUD Nintendo Switch</h1>
+  <p>Cadastro de consoles, jogos e acessórios</p>
+</header>
+
+<nav>
+  <a href="#cadastro">Cadastro</a>
+  <a href="#lista">Lista</a>
+</nav>
+
+<div class="container" id="cadastro">
+  <h2>Cadastrar Produto</h2>
+
+  <input type="hidden" id="indice">
+
+  <label>Nome do produto:</label>
+  <select id="nome">
+    <option value="">Selecione um nome</option>
+
+    <option>Nintendo Switch</option>
+    <option>Nintendo Switch OLED</option>
+    <option>Nintendo Switch Lite</option>
+    <option>Nintendo Switch 2</option>
+
+    <option>Mario Kart 8 Deluxe</option>
+    <option>Super Mario Odyssey</option>
+    <option>The Legend of Zelda Breath of the Wild</option>
+    <option>The Legend of Zelda Tears of the Kingdom</option>
+    <option>Super Smash Bros Ultimate</option>
+    <option>Animal Crossing New Horizons</option>
+    <option>Pokémon Scarlet</option>
+    <option>Pokémon Violet</option>
+    <option>Splatoon 3</option>
+    <option>Luigi's Mansion 3</option>
+    <option>Kirby and the Forgotten Land</option>
+    <option>Metroid Dread</option>
+    <option>Donkey Kong Country Tropical Freeze</option>
+    <option>Mario Party Superstars</option>
+    <option>Super Mario Bros Wonder</option>
+    <option>Princess Peach Showtime</option>
+
+    <option>Joy-Con</option>
+    <option>Pro Controller</option>
+    <option>Dock Nintendo Switch</option>
+    <option>Carregador Nintendo Switch</option>
+    <option>Cartão MicroSD</option>
+    <option>Capa Protetora</option>
+    <option>Película de Vidro</option>
+    <option>Volante Joy-Con</option>
+    <option>Case de Transporte</option>
+    <option>Suporte Ajustável</option>
+  </select>
+
+  <label>Categoria:</label>
+  <select id="categoria">
+    <option value="">Selecione uma categoria</option>
+    <option>Console</option>
+    <option>Jogo</option>
+    <option>Acessório</option>
+  </select>
+
+  <label>Modelo:</label>
+  <input type="text" id="modelo" placeholder="Ex: OLED, Lite, Digital, Físico">
+
+  <label>Preço:</label>
+  <input type="number" id="preco" placeholder="Ex: 2500">
+
+  <label>Quantidade:</label>
+  <input type="number" id="quantidade" placeholder="Ex: 10">
+
+  <button class="btn-salvar" onclick="salvar()">Salvar Cadastro</button>
+</div>
+
+<div class="container" id="lista">
+  <h2>Lista de Produtos Cadastrados</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Modelo</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+
+    <tbody id="tabela"></tbody>
+  </table>
+</div>
+
+<footer>
+  <p>Site CRUD Nintendo Switch - HTML, CSS e JavaScript</p>
+</footer>
+
+<script>
+  let produtos = [];
+
+  function salvar() {
+    let indice = document.getElementById("indice").value;
+    let nome = document.getElementById("nome").value;
+    let categoria = document.getElementById("categoria").value;
+    let modelo = document.getElementById("modelo").value;
+    let preco = document.getElementById("preco").value;
+    let quantidade = document.getElementById("quantidade").value;
+
+    if (nome === "" || categoria === "" || modelo === "" || preco === "" || quantidade === "") {
+      alert("Preencha todos os campos!");
+      return;
+    }
+
+    let produto = {
+      nome: nome,
+      categoria: categoria,
+      modelo: modelo,
+      preco: preco,
+      quantidade: quantidade
+    };
+
+    if (indice === "") {
+      produtos.push(produto);
+    } else {
+      produtos[indice] = produto;
+      document.getElementById("indice").value = "";
+    }
+
+    limparCampos();
+    listarProdutos();
+  }
+
+  function listarProdutos() {
+    let tabela = document.getElementById("tabela");
+    tabela.innerHTML = "";
+
+    produtos.forEach((produto, index) => {
+      tabela.innerHTML += `
+        <tr>
+          <td>${produto.nome}</td>
+          <td>${produto.categoria}</td>
+          <td>${produto.modelo}</td>
+          <td>R$ ${produto.preco}</td>
+          <td>${produto.quantidade}</td>
+          <td>
+            <button class="btn-editar" onclick="editar(${index})">Editar</button>
+            <button class="btn-excluir" onclick="excluir(${index})">Excluir</button>
+          </td>
+        </tr>
+      `;
+    });
+  }
+
+  function editar(index) {
+    document.getElementById("indice").value = index;
+    document.getElementById("nome").value = produtos[index].nome;
+    document.getElementById("categoria").value = produtos[index].categoria;
+    document.getElementById("modelo").value = produtos[index].modelo;
+    document.getElementById("preco").value = produtos[index].preco;
+    document.getElementById("quantidade").value = produtos[index].quantidade;
+  }
+
+  function excluir(index) {
+    produtos.splice(index, 1);
+    listarProdutos();
+  }
+
+  function limparCampos() {
+    document.getElementById("nome").value = "";
+    document.getElementById("categoria").value = "";
+    document.getElementById("modelo").value = "";
+    document.getElementById("preco").value = "";
+    document.getElementById("quantidade").value = "";
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento - Nintendo Switch</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f2f2f2;
+}
+
+header{
+    background:#e60012;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.container{
+    max-width:600px;
+    margin:30px auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h2{
+    color:#e60012;
+    text-align:center;
+}
+
+label{
+    display:block;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#e60012;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#b3000f;
+}
+
+.total{
+    font-size:22px;
+    color:green;
+    text-align:center;
+    margin-top:20px;
+    font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>Loja Nintendo Switch</h1>
+</header>
+
+<div class="container">
+
+    <h2>Pagamento</h2>
+
+    <label>Produto</label>
+    <select id="produto" onchange="atualizarPreco()">
+        <option value="2299">Nintendo Switch - R$ 2.299,00</option>
+        <option value="2699">Nintendo Switch OLED - R$ 2.699,00</option>
+        <option value="1499">Nintendo Switch Lite - R$ 1.499,00</option>
+        <option value="499">Joy-Con - R$ 499,00</option>
+    </select>
+
+    <label>Quantidade</label>
+    <input type="number" id="quantidade" value="1" min="1" onchange="atualizarPreco()">
+
+    <div class="total" id="valorTotal">
+        Total: R$ 2.299,00
+    </div>
+
+    <label>Nome do Cliente</label>
+    <input type="text" placeholder="Digite seu nome">
+
+    <label>Forma de Pagamento</label>
+    <select>
+        <option>PIX</option>
+        <option>Cartão de Crédito</option>
+        <option>Cartão de Débito</option>
+        <option>Boleto Bancário</option>
+    </select>
+
+    <label>Número do Cartão</label>
+    <input type="text" placeholder="0000 0000 0000 0000">
+
+    <label>Validade</label>
+    <input type="text" placeholder="MM/AA">
+
+    <label>CVV</label>
+    <input type="password" placeholder="123">
+
+    <button onclick="finalizarPagamento()">
+        Finalizar Pagamento
+    </button>
+
+</div>
+
+<script>
+function atualizarPreco(){
+
+    let preco =
+        Number(document.getElementById("produto").value);
+
+    let quantidade =
+        Number(document.getElementById("quantidade").value);
+
+    let total = preco * quantidade;
+
+    document.getElementById("valorTotal").innerHTML =
+        "Total: R$ " + total.toLocaleString("pt-BR", {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        });
+}
+
+function finalizarPagamento(){
+    alert("Pagamento simulado com sucesso! Obrigado pela compra.");
+}
+</script>
+
+</body>
+</html>
